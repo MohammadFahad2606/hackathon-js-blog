@@ -1,0 +1,28 @@
+.pading-r{
+    padding-right: 10px;
+}
+.input{
+    padding: 20px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    display: none;  
+    transition: 1s;
+}
+.input button{
+    background-color: #505050;
+    color: #fff;
+}
+.input input,.input textarea, .input button{
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #505050;
+    border-radius: 10px;
+
+}
+.error{
+    color: red;
+}
