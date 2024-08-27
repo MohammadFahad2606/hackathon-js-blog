@@ -17,12 +17,19 @@ const login = () => {
   signInWithEmailAndPassword(auth, email.value, pass.value)
     .then((userCredential) => {
       const user = userCredential.user;
-      alert("Admin SignIn");
+      Toastify({
+        text: "SignIn",
+        duration: 3000,
+      }).showToast();
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert(errorMessage);
+      Toastify({
+        text: errorMessage,
+
+        duration: 3000,
+      }).showToast();
     });
 };
 

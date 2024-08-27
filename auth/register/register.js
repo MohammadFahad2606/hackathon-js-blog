@@ -38,34 +38,63 @@ let errorObj = [
   },
 ];
 
+
+const signup = () => {
+  cekValid()
+  if(!cekValid()){
+    
+    
+
+
+    createUserWithEmailAndPassword(auth, email.value, pas.value)
+    .then((userCredential) => {
+      SignupBtn.innerText = "Sign Up....."
+      const user = userCredential.user;
+      SignupBtn.innerText = "Sign Up"
+      window.location.href = "../login/login.html";
+    })
+    .catch((error) => {
+      SignupBtn.innerText = "Sign Up....."
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      SignupBtn.innerText = "Sign Up"
+      alert(error.message);
+    });
+
+
+
+
+  }
+};
+
+
+
+
+
+
 const cekValid = () => {
   isValid = false;
 
   errorObj.forEach((value) => {
     if (!value.regx.test(value.feild.value)) {
       value.errorFeild.innerHTML = value.errorMsg;
-    
+      isValid = true;
     }
+  
 
+    setTimeout(()=>{
+      value.errorFeild.innerHTML = "";
+    },1000);
+  
   });
-};
+return isValid
+}
 
 
-const signup = () => {
-  cekValid();
-  createUserWithEmailAndPassword(auth, email.value, pas.value)
-    .then((userCredential) => {
-      // Signed up
-      const user = userCredential.user;
-      alert("data save plz login");
-      window.location.href = "../login/login.html";
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(error.message);
-    });
-};
+
+
+
+
 
 SignupBtn.addEventListener("click", signup);
 
