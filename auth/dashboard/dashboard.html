@@ -52,24 +52,7 @@
     <header>
       <div class="wraper">
         <div class="flex items-center justify-between">
-          <div id="dl-menu" class="dl-menuwrapper hidden md:block">
-            <button class="dl-trigger">Open Menu</button>
-            <ul class="dl-menu">
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="./auth/register/register.html">Register</a>
-              </li>
-              <li>
-                <a href="./auth/login/login.html">Login</a>
-              </li>
-              
-              
-              </li>
-            </ul>
-          </div>
-          <!-- /dl-menuwrapper -->
+          
 
           <div
             class="w-[195px] md:w-[280px] sm:w-[200px] col:w-[150px] col:ml-[50px]"
@@ -81,49 +64,14 @@
                 <img class="" src="../../assets/images/logo.png" alt=""
                 /></a>
             </div>
-
+            <div  class="flex items-center md:justify-center gap-4">
+              <div id="addBtn"><i class="fa-solid fa-plus text-[22px]"></i></div> 
+           <div  id="logoutBtn"><i class="fa-solid fa-right-from-bracket text-[22px]"></i></div>
+          
+           </div>
           
 
-          <div class="flex items-center">
-            <div class="relative header-search-form-wrapper">
-              <div
-                class="cart-search-contact mr-[10px] md:mr-0 text-center cursor-pointer"
-              >
-                <div
-                  class=" search-toggle-btn bg-[rgba(255,255,255,0.05)] text-[#444444] w-[50px] h-[50px] rounded-[50%] leading-[55px]"
-                >
-
-               
-                <div  class="pading-r p-[15px] flex gap-4 text-center">
-                   <div id="addBtn"><i class="fa-solid fa-plus text-[22px]"></i></div> 
-                <div  id="logoutBtn"><i class="fa-solid fa-right-from-bracket text-[22px]"></i></div>
-               
-                </div>
-                 
-                </div>
-                <!-- logoutBtn end -->
-                
-              </div>
-              <div
-                class="header-search-form absolute right-0 top-[210%] w-[263px] bg-white z-20 p-[15px] transform text-center transition-all opacity-0 invisible shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);]"
-              >
-                <div>
-                  <form class="relative">
-                    <input
-                      class="bg-white w-full h-[40px] pl-[10px] pr-[40px] focus-visible:outline-0 border border-[rgba(64,59,59,0.07)] capitalize"
-                      type="text"
-                      placeholder="search here.."
-                    />
-                    <button
-                      class="absolute right-0 top-0 w-[40px] h-[40px] leading-[43px] bg-[#272c3f] text-white border-0"
-                    >
-                      <i class="fi flaticon-magnifiying-glass text-white"></i>
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </header>
@@ -131,15 +79,16 @@
 
     
 
-    <div class="input">
+    <div  class="input">
       
         <input id="input"  placeholder="Tittle" type="text">
         <textarea id="textarea" placeholder="Description" rows="5" name="" ></textarea>
-        <input type="file">
-        <select>
+        <input id="postImg" type="file" accept="image/*">
+        <select id="categories">
           <option value="0">Select Categorie:</option>
           <option value="News">News</option>
           <option value="Business">Business</option>
+          <option value="Technology">Technology</option>
           <option value="Fitness">Fitness</option>
           <option value="Fashion">Fashion</option>
           <option value="Travel">Travel</option>
@@ -148,6 +97,7 @@
     
         </select>
         <button  id="addDataBtn">ADD</button>
+        <button  id="updateDataBtn">UPDATE</button>
         
         
       </div>
