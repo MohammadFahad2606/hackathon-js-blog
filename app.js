@@ -11,29 +11,24 @@ import {
   onAuthStateChanged,
   auth,
 } from "./firebas.js";
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    window.location.href = "./auth/dashboard/dashboard.html";
-  }
-});
 
-if (window.location.pathname === "/index.html") {
-  let boxContener = document.querySelector("#boxContener");
+let loderWrapper = document.querySelector("#loader");
 
-  const getpost = async () => {
-    boxContener.innerHTML = "";
+const getpost = async () => {
+  boxContener.innerHTML = "";
 
-    const querySnapshot = await getDocs(collection(db, "blogPost"));
+  loderWrapper.style.display = "block";
+  const querySnapshot = await getDocs(collection(db, "blogPost"));
 
-    querySnapshot.forEach((doc) => {
-      const { tittle, disruption, categorie, img, postDate } = doc.data();
+  querySnapshot.forEach((doc) => {
+    const { tittle, disruption, categorie, img, postDate } = doc.data();
 
-      boxContener.innerHTML += `
-      <div  class="col-span-6 md:col-span-6 sm:col-span-12">
+    boxContener.innerHTML += `
+      <div  class="col-span-6 md:col-span-6 sm:col-span-12 ">
                           <div class="mb-7 pb-5 border-b border-[#eeeeee] group">
                               <div class="overflow-hidden relative rounded-[6px]">
                                   <img src="${img}" alt=""
-                                      class="boxContener-img w-full grayscale-0 scale-[1]
+                                      class="boxContener-img w-full grayscale-0 scale-[0.3]
                           rounded-[6px] transition-all group-hover:grayscale-[100%] group-hover:scale-[1.2]">
                                   <div
                                       class="absolute left-[15px] top-[15px] p-[4px_25px_2px] bg-[#3756f7] uppercase text-white text-[14px] rounded-[5px]">
@@ -51,7 +46,7 @@ if (window.location.pathname === "/index.html") {
                                               class="w-[40px] h-[40px] rounded-[50%] mr-2">
                                       </li>
                                       <li class="text-base text-[#3756f7]">By <a
-                                              href="blog-single.html"
+                                              
                                               class="text-[#003aae] transition-all hover:text-[#3756f7]">Admin</a>
                                       </li>
                                       <li
@@ -70,19 +65,21 @@ if (window.location.pathname === "/index.html") {
                       </div>
   
   `;
-    });
-  };
-  getpost();
+  });
 
-  window.siglePost = (id) => {
-    localStorage.setItem("post-id", id);
-    window.location.href = "./blog-single.html";
-  };
-}
+  loderWrapper.style.display = "none";
+};
+getpost();
+
+window.siglePost = (id) => {
+  localStorage.setItem("post-id", id);
+  window.location.href = "./blog-single.html";
+};
 
 if (window.location.pathname === "/blog-single.html") {
   let blogPG = document.getElementById("blog-pg");
   let id = localStorage.getItem("post-id");
+
   const getSinglePost = async () => {
     try {
       let data = await getDoc(doc(db, "blogPost", id));
@@ -160,3 +157,9 @@ if (window.location.pathname === "/blog-single.html") {
   };
   getSinglePost();
 }
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    window.location.href = "./auth/dashboard/dashboard.html";
+  }
+});
